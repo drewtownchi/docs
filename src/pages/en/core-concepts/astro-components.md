@@ -155,14 +155,31 @@ const items = ["Dog", "Cat", "Platypus"];
 :::tip
 You can also set tags dynamically:
 
-```astro "El"
+Astro can conditionally display HTML by using JSX ternary expressions
+
+```astro title="src/components/ConditionalHtml.astro" "item"
 ---
-// src/pages/index.astro
-const El = 'div'
+const item = true;
 ---
-<El>Hello!</El> <!-- renders as <div>Hello!</div> -->
+{item === true && (
+    <p>Show me!<p>
+  )
+}
 ```
-:::
+
+If alternate content needs to be displayed when the condition is false then you can use a full if/then/else expression.
+
+```astro title="src/components/ConditionalHtml.astro" "item"
+---
+const item = true;
+---
+{item === true ? (
+    <p>Show me!<p>
+  ) : (
+    <p>Else show me if not true</p>
+  )
+}
+```
 
 ### Fragments & Multiple Elements
 
